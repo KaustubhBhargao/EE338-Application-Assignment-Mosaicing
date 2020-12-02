@@ -1,34 +1,52 @@
+%% Some Standard images
 tic;
-%% Reading Images
+%% Shanghai
+%reading the images
+img1 = imread('../data/shanghai-03.png');
+img2 = imread('../data/shanghai-04.png');
 
-img1 = imread('../data/house_1.jpg');
-img2 = imread('../data/house_2.jpg');
-%imshow(img1);
-
-%% Eavaluating the Rotation and Shift Parameters
-
+%Evaluating the parameters (angle and translation coeffs)
 [angle, tx, ty] = myParameters(img1(:,:,1), img2(:,:,1));
 
-%% Stitching the images
+%Stitcing the images
+Stitched_img = myStitch(img1, img2, angle, tx, ty);
+figure();imshow(img1);
+figure();imshow(img2);
+figure();imshow(Stitched_img);
 
-stitched_img = myStitch(img1, img2, angle, tx, ty);
-figure;
-imshow(stitched_img), axis image; colorbar; 
+%% Wallpaper
+img1 = imread('../data/wallpaper_1.jpg');
+img2 = imread('../data/wallpaper_2.jpg');
+[angle, tx, ty] = myParameters(img1(:,:,1), img2(:,:,1));
+Stitched_img = myStitch(img1, img2, angle, tx, ty);
+figure();imshow(img1);
+figure();imshow(img2);
+figure();imshow(Stitched_img);
 
+%% Some Images taken from my Phone
+%% Parking Lot
+img1 = imread('../data/b_3.jpg');
+img2 = imread('../data/b_4.jpg');
+[angle, tx, ty] = myParameters(img1(:,:,1), img2(:,:,1));
+Stitched_img = myStitch(img1, img2, angle, tx, ty);
+figure();imshow(img1);
+figure();imshow(img2);
+figure();imshow(Stitched_img);
+
+%% House
+img1 = imread('../data/house_small_1.jpg');
+img2 = imread('../data/house_small_2.jpg');
+[angle, tx, ty] = myParameters(img1(:,:,1), img2(:,:,1));
+Stitched_img = myStitch(img1, img2, angle, tx, ty);
+figure();imshow(img1);
+figure();imshow(img2);
+figure();imshow(Stitched_img);
+%% Living Room
+img1 = imread('../data/tv_small_1.jpg');
+img2 = imread('../data/tv_small_2.jpg');
+[angle, tx, ty] = myParameters(img1(:,:,1), img2(:,:,1));
+Stitched_img = myStitch(img1, img2, angle, tx, ty);
+figure();imshow(img1);
+figure();imshow(img2);
+figure();imshow(Stitched_img);
 toc;
-
-% %% Wallpaper
-% tic;
-% %reading the images
-% img1 = imread('../data/bed_1.jpg');
-% img2 = imread('../data/bed_2.jpg');
-% 
-% % Estimating the rigid transformation between the images
-% [theta, tx, ty] = myParameters(img1(:,:,1), img2(:,:,1));
-% 
-% % Stitching the images using transformation parameters
-% out = myStitch(img1,img2,theta,tx,ty);
-% figure();imshow(img1);
-% figure();imshow(img2);
-% figure();imshow(out);
-% toc;
