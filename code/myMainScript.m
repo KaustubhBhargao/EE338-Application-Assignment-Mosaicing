@@ -1,12 +1,12 @@
 tic;
 %% Reading Images
-
+% The adress needs to be changed everytime we want to stitch more images together 
 img1 = imread('../data/wallpaper_1.jpg');
 img2 = imread('../data/wallpaper_2.jpg');
 
 
 %% Downsampling images 
-% Every image had to be downsampled to a different extent 
+% Every image had to be downsampled to a different extent to give best results
 img1 = imresize(img1, [500,700]);
 img2 = imresize(img2, [500,700]);
 
